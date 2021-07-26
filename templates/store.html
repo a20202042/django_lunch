@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#{% extends 'base.html' %}#}
+
+{#{% block content %}#}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>{{ form.name.label }}</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group col-md-4">
+            <label>{{ form.price.label }}</label>
+            {{ form.price }}
+        </div>
+        <div class="form-group col-md-2">
+            <input type="submit" class="btn btn-success" style="margin-top:30px;" value="儲存">
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>吃店名</th>
+        <th>電話記得不要打錯</th>
+        <th>備註可以省略</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for store in store %}
+        <tr>
+            <td>{{ store.store_name }}</td>
+            <td>{{ store.store_number }}</td>
+            <td>{{ store.store_remake }}</td>
+            <td>
+                <a href="#" class="btn btn-info">修改</a>
+                <a href="#" class="btn btn-danger">刪除</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{#{% endblock  %}#}
+
+</body>
+</html>
